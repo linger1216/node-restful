@@ -1,0 +1,12 @@
+{
+  "/foo/test": {
+    "params": [
+      {
+        "name": "para",
+        "type": "string"
+      }
+    ],
+    "method": "GET",
+    "desc": "xxxxxx"
+  }
+}
