@@ -6,12 +6,11 @@ var logrotate = require('../../lib/log_ratator');
 
 module.exports = function (app) {
 
-    // use the global rotator
     var rotator = logrotate.rotator;
-
-    // check file rotation every 5 minutes, and rotate the file if its size exceeds 10 mb.
-    // keep only 3 rotated files and compress (gzip) them.
-    rotator.register(app.config.root + 'log.txt', {schedule: '1m', size: '10k', compress: true, count: 3});
+    rotator.register(app.config.root + 'log.txt', { schedule: app.config.log.rotate.schedule,
+        size: app.config.log.rotate.size,
+        compress: true,
+        count: app.config.log.rotate.count });
 
     rotator.on('error', function(err) {
         app.logger.info('oops, log rotate an error occured!');

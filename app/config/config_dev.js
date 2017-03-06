@@ -25,6 +25,11 @@ const config = {
         },
         console:{
             level: 'DEBUG'
+        },
+        rotate:{
+            schedule:'1h',
+            size:'10m',
+            count:168
         }
     }
 };
