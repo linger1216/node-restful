@@ -1,10 +1,5 @@
-# node-restful
 
+// extend 
 
-study node 
+    https://github.com/justmoon/node-extend
 
-
-
-
-
---------------------------------------------------------------------------------

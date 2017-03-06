@@ -1,28 +1,28 @@
 {
   "name": "node-restful",
   "version": "0.0.1",
-  "description": "weather api",
-  "main": "index.js",
+  "description": "gwen api",
+  "main": "app.js",
   "scripts": {
-    "dev": "nodemon app.js",
-    "start": "node app.js",
-    "pm2": "pm2 start app.js --name 'restful' -o ./log.out -e ./log.err"
-  },
-  "engines": {
-    "node": ">=6"
+    "dev": "NODE_ENV=dev PORT=12000 nodemon index.js",
+    "prod": "NODE_ENV=dev PORT=12000 pm2 start index.js --name 'node-gwen'"
   },
   "author": "lid <lid.guan@gmail.com>",
   "dependencies": {
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
+    "egg-logger": "^1.5.0",
     "express": "^4.14.0",
     "glob": "^7.1.1",
     "helmet": "^3.1.0",
     "log4js": "^1.0.1",
     "moment": "^2.17.1",
     "mongoose": "^4.7.0",
+    "mongoose-long": "^0.1.1",
     "morgan": "^1.7.0",
-    "rx": "^4.1.0"
+    "parameter": "^2.0.0",
+    "rx": "^4.1.0",
+    "urllib": "^2.21.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
