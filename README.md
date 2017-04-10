@@ -2,6 +2,13 @@
 
 the easy node restful api framework
 
+
+
+### init
+
+
+
+
 ```
 node-project
 ├── package.json

@@ -15,6 +15,5 @@ function _route(app, method, url, filePath) {
 module.exports = function (app) {
     this.app = app
     const method = { GET:"GET", POST:"POST" }
-    _route(app, method.POST, '/api/v1/patch/add', 'app/controller/patch/add.js');
-    _route(app, method.GET, '/api/v1/patch/query', 'app/controller/patch/query.js');
+    _route(app, method.POST, '/api/v1/test', 'app/controller/test/test.js');
 };

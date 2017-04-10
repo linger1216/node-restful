@@ -7,24 +7,30 @@ const glob = require('glob');
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
-// 不要做耗时操作
 module.exports = function (app) {
 
-    var url = "mongodb://" + (app.config.dbs.patch.user ? app.config.dbs.patch.user + ":" : "") + (app.config.dbs.patch.password ? app.config.dbs.patch.password + "@" : "") + app.config.dbs.patch.host + ":" + app.config.dbs.patch.port + "/" + app.config.dbs.patch.database;
-    var conn = mongoose.createConnection(url);
+    if (app.config.dbs){
+        if (app.config.dbs.test){
+            var conn = mongoose.createConnection(app.config.dbs.test);
 
-    conn.on('error', function (error) {
-        app.logger.info(app.config.dbs.patch.desc + 'mongoose failed:'+ error);
-    });
+            conn.on('error', function (error) {
+                app.logger.info(app.config.dbs.test + ' failed:'+ error);
+            });
 
-    conn.once('open', function() {
-        app.logger.info(app.config.dbs.patch.desc + 'mongoose opened!');
-    });
+            conn.once('open', function() {
+                app.logger.info(app.config.dbs.test + ' ok');
+            });
 
-    var models = glob.sync(app.config.dbs.patch.models_path);
-    models.forEach(function (model) {
-        require(model)(conn);
-    });
-    app.patch_conn = conn;
-    app.patch_mongoose = mongoose;
+            app.logger.debug("----:", app.config.root + 'app/model/*/*.js');
+
+            var models = glob.sync(app.config.root + 'app/model/*/*.js');
+            models.forEach(function (model) {
+                require(model)(conn);
+            });
+
+            app.test_conn = conn;
+            app.LessonModel = conn.model('LessonSchema');
+        }
+        app.mongoose = mongoose;
+    }
 }

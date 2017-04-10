@@ -75,6 +75,18 @@ middle_list.forEach(function (f) {
 });
 
 
+
+// ----------------------------------------------------- global last
+var last_list = glob.sync(app.config.root + 'app/last/*.js');
+last_list.forEach(function(f) {
+    app.logger.info('attached last:' + f)
+    var last_func = require(f)
+    if (typeof last_func === 'function') {
+        last_func(app);
+    }
+});
+
+
 // ----------------------------------------------------- load router (second)
 require(app.config.root + "app/router")(app);
 
@@ -85,7 +97,7 @@ app.use(require(app.config.root + 'app/error_handler.js'));
 
 // ----------------------------------------------------- start server
 app.listen(app.config.server.port, function () {
-    logger.info(app.config.server.desc + " started on port:" + app.config.server.port);
+    logger.info("server started on port:" + app.config.server.port);
 });
 
 
