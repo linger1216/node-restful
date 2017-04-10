@@ -23,7 +23,6 @@ app.use(morgan('dev'))
 
 
 // ----------------------------------------------------- load config
-// NODE_ENV=production
 if (process.env.NODE_ENV === 'dev'){
     app.config = require('./app/config/config_dev');
 } else if (process.env.NODE_ENV === 'prod'){

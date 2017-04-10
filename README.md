@@ -1,11 +1,12 @@
 
 
-the easy node restful api framework
+# The lite node restful api framework
 
 
 
-### init
 
+
+### Files description
 
 
 
@@ -14,19 +15,41 @@ node-project
 ├── package.json
 ├── index.js 
 ├── app
-|   ├── router.js
-|   ├── error_handler.js (default error handler)
+│   ├── config
+│   |   └── config_dev.js or config_prod.js
 │   ├── controller
 │   |   └── home.js
-│   ├── middleware (optional)
-│   |   └── response_time.js
-│   ├── init (optional)
+│   ├── init
 │   |   └── init.js
-│   ├── config (optional)
-│   |   └── config_dev or config_prod
-│   ├── model (optional)
+│   ├── last
+│   |   └── init.js
+│   ├── middleware
+│   |   └── response_time.js
+│   ├── model
 │   |   └── xxx.js
+|   ├── router.js
+|   ├── error_handler.js (default error handler)
 ```
 
 
-the code is very easy, so no doc.
+
+### config
+
+`npm run dev` attached `config_dev.js`
+
+`npm run prod` attached `config_dev.js`
+
+
+
+### controller
+
+Place concrete implementation of the restful
+
+
+
+### init && last
+
+You can inject the initialization object into the app
+
+
+
